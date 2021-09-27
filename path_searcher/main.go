@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -14,7 +15,7 @@ func main() {
 		return
 	}
 	kw := os.Args[1] // keyword for path
-	paths := strings.Split(os.Getenv("PATH"), ":")
+	paths := filepath.SplitList(os.Getenv("PATH"))
 
 	for i, p := range paths {
 		if strings.Contains(strings.ToLower(p), strings.ToLower(kw)) {
